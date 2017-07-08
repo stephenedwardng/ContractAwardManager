@@ -11,11 +11,11 @@ public class Supplier {
     private int financialScore;
     private int valueScore;
     private int deliveryScore;
-    private boolean exclude;
-    private boolean insurance;
-    private boolean courtJudgement;
+    private int exclude;
+    private int insurance;
+    private int courtJudgement;
 
-    public Supplier(String name, String registration, int financialScore, int valueScore, int deliveryScore, boolean exclude, boolean insurance, boolean courtJudgement) {
+    public Supplier(String name, String registration, int financialScore, int valueScore, int deliveryScore, int exclude, int insurance, int courtJudgement) {
         this.name = name;
         this.registration = registration;
         this.financialScore = financialScore;
@@ -66,27 +66,27 @@ public class Supplier {
         this.deliveryScore = deliveryScore;
     }
 
-    public boolean isExclude() {
+    public int isExclude() {
         return exclude;
     }
 
-    public void setExclude(boolean exclude) {
+    public void setExclude(int exclude) {
         this.exclude = exclude;
     }
 
-    public boolean isInsurance() {
+    public int isInsurance() {
         return insurance;
     }
 
-    public void setInsurance(boolean insurance) {
+    public void setInsurance(int insurance) {
         this.insurance = insurance;
     }
 
-    public boolean isCourtJudgement() {
+    public int isCourtJudgement() {
         return courtJudgement;
     }
 
-    public void setCourtJudgement(boolean courtJudgement) {
+    public void setCourtJudgement(int courtJudgement) {
         this.courtJudgement = courtJudgement;
     }
 }

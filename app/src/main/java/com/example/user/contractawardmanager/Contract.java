@@ -11,7 +11,7 @@ public class Contract {
 
     private String title;
     private String manager;
-    private String supplier;
+    private int supplier;
     private Status status;
     private Cat category;
     private int strategicImportanceRating;
@@ -21,7 +21,7 @@ public class Contract {
     private int actualValue;
     private String description;
 
-    public Contract(String title, String manager, String supplier, Status status, Cat category, int strategicImportanceRating, String startDate, String endDate, int contractedValue, int actualValue, String description) {
+    public Contract(String title, String manager, int supplier, Status status, Cat category, int strategicImportanceRating, String startDate, String endDate, int contractedValue, int actualValue, String description) {
         this.title = title;
         this.manager = manager;
         this.supplier = supplier;
@@ -51,11 +51,11 @@ public class Contract {
         this.manager = manager;
     }
 
-    public String getSupplier() {
+    public int getSupplier() {
         return supplier;
     }
 
-    public void setSupplier(String supplier) {
+    public void setSupplier(int supplier) {
         this.supplier = supplier;
     }
 
