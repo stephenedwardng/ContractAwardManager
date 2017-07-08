@@ -197,6 +197,4 @@ public class Contract {
         SqlRunner.closeConnection();
     }
 
-
-
 }
