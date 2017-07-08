@@ -20,7 +20,7 @@ CREATE TABLE contracts (
   supplier_id INTEGER references suppliers(id) ON DELETE CASCADE,
   status VARCHAR(50),
   category VARCHAR(50),
-  strategicImportanceRating VARCHAR(50),
+  strategicImportanceRating INTEGER,
   startDate VARCHAR(50),
   endDate VARCHAR(50),
   contractedValue INTEGER,
