@@ -1,9 +1,14 @@
 package com.example.user.contractawardmanager;
 
 import behaviours.Cat;
+import behaviours.Performance;
 import behaviours.Status;
 import java.sql.ResultSet;
 import db.SqlRunner;
+
+import static behaviours.Performance.AMBER;
+import static behaviours.Performance.GREEN;
+import static behaviours.Performance.RED;
 
 
 /**
@@ -137,6 +142,24 @@ public class Contract {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int calcChangeValue() {
+        return contractedValue - actualValue;
+    }
+
+    public Performance valuePerformance() {
+        double variance = (double)actualValue / (double)contractedValue;
+
+        if (variance < 0.8) {
+            return GREEN;
+        } else if (variance <= 1.0) {
+            return AMBER;
+        } else if (variance > 1.0) {
+            return RED;
+        }
+        else return null;
+
     }
 
 //    public int daysToExpiry() {

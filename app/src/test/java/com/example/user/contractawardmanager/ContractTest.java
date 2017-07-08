@@ -6,6 +6,7 @@ import org.junit.Test;
 import behaviours.Cat;
 import behaviours.Status;
 
+import static behaviours.Performance.RED;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -39,6 +40,18 @@ public class ContractTest {
         contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
         contract.save();
         assertEquals("'200 MacBook Pros', 'Edward Ng', 1, 3, '2017-07-07', '2018-07-07', 40000, 45000, 'Procurement of new laptops for new location in Aberdeen'", contract.prettyContract(contract));
+    }
+
+    @Test
+    public void canCalcChangeValue() {
+        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        assertEquals(-5000, contract.calcChangeValue());
+    }
+
+    @Test
+    public void checkValuePerformance() {
+        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        assertEquals(RED, contract.valuePerformance());
     }
 
 }
