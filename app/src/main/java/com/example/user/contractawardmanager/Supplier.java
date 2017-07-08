@@ -154,4 +154,35 @@ public class Supplier {
         SqlRunner.closeConnection();
     }
 
+    public static Supplier findSupplier(int supplier_id) {
+        Supplier supplier = null;
+        String sql = String.format("SELECT * FROM suppliers WHERE id = %d;", supplier_id);
+        ResultSet rs = SqlRunner.executeQuery(sql);
+
+        try {
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String registration = rs.getString("registration");
+                int financialScore = rs.getInt("financialScore");
+                int valueScore = rs.getInt("valueScore");
+                int deliveryScore = rs.getInt("deliveryScore");
+                int exclude = rs.getInt("exclude");
+                int insurance = rs.getInt("insurance");
+                int courtJudgement = rs.getInt("courtJudgement");
+
+
+                supplier = new Supplier(name, registration, financialScore, valueScore, deliveryScore, exclude, insurance, courtJudgement);
+            }
+        }catch (Exception ex) {
+            System.exit(0);
+        } finally {
+            SqlRunner.closeConnection();
+        }
+        return supplier;
+    }
+
+    public String prettySupplier(Supplier supplier) {
+        return String.format("'%s', '%s', %d, %d, %d, %d, %d, %d", supplier.name, supplier.registration, supplier.financialScore, supplier.valueScore, supplier.deliveryScore, supplier.exclude, supplier.insurance, supplier.courtJudgement);
+    }
+
 }
