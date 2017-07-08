@@ -1,5 +1,5 @@
-DROP TABLE contracts;
-DROP TABLE suppliers;
+DROP TABLE IF EXISTS contracts;
+DROP TABLE IF EXISTS suppliers;
 
 CREATE TABLE suppliers (
   ID INTEGER primary key AUTOINCREMENT,

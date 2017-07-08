@@ -2,6 +2,9 @@ package com.example.user.contractawardmanager;
 
 import behaviours.Cat;
 import behaviours.Status;
+import java.sql.ResultSet;
+import db.SqlRunner;
+
 
 /**
  * Created by user on 07/07/2017.
@@ -9,9 +12,10 @@ import behaviours.Status;
 
 public class Contract {
 
+    private int id;
     private String title;
     private String manager;
-    private int supplier;
+    private int supplier_id;
     private Status status;
     private Cat category;
     private int strategicImportanceRating;
@@ -21,10 +25,10 @@ public class Contract {
     private int actualValue;
     private String description;
 
-    public Contract(String title, String manager, int supplier, Status status, Cat category, int strategicImportanceRating, String startDate, String endDate, int contractedValue, int actualValue, String description) {
+    public Contract(String title, String manager, int supplier_id, Status status, Cat category, int strategicImportanceRating, String startDate, String endDate, int contractedValue, int actualValue, String description) {
         this.title = title;
         this.manager = manager;
-        this.supplier = supplier;
+        this.supplier_id = supplier_id;
         this.status = status;
         this.category = category;
         this.strategicImportanceRating = strategicImportanceRating;
@@ -51,12 +55,12 @@ public class Contract {
         this.manager = manager;
     }
 
-    public int getSupplier() {
-        return supplier;
+    public int getSupplier_id() {
+        return supplier_id;
     }
 
-    public void setSupplier(int supplier) {
-        this.supplier = supplier;
+    public void setSupplier_id(int supplier_id) {
+        this.supplier_id = supplier_id;
     }
 
     public Status getStatus() {
@@ -126,5 +130,73 @@ public class Contract {
 //    public int daysToExpiry() {
 ////        return endDate - startDate
 //    }
+
+    // CRUD begins
+
+    public void save() {
+        String sql = String.format("INSERT INTO albums (title, manager, supplier_id, status, category, strategicImportanceRating, startDate, endDate, contractedValue, actualValue, description) " +
+                "VALUES ('%s', '%s', %d, '%s', '%s', %d, '%s', '%s', %d, %d, '%s')", this.title, this.manager, this.supplier_id, this.status, this.category, this.strategicImportanceRating, this.startDate, this.endDate, this.contractedValue, this.actualValue, this.description);
+        this.id = SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
+    public static void all() {
+        String sql = "SELECT * FROM contracts;";
+        ResultSet rs = SqlRunner.executeQuery(sql);
+
+        try {
+            while (rs.next()) {
+                String title = rs.getString("title");
+                String manager = rs.getString("manager");
+                int supplier_id = rs.getInt("supplier_id");
+                String status = rs.getString("status");
+                String category = rs.getString("category");
+                int strategicImportanceRating = rs.getInt("strategicImportanceRating");
+                String startDate = rs.getString("startDate");
+                String endDate = rs.getString("endDate");
+                int contractedValue = rs.getInt("contractedValue");
+                int actualValue = rs.getInt("actualValue");
+                String description = rs.getString("description");
+
+
+                System.out.println("Title: " + title);
+                System.out.println("Manager: " + manager);
+                System.out.println("Supplier ID: " + supplier_id);
+                System.out.println("Status: " + status);
+                System.out.println("Category: " + category);
+                System.out.println("Strategic Importance Rating: " + strategicImportanceRating);
+                System.out.println("Start Date: " + startDate);
+                System.out.println("End Date: " + endDate);
+                System.out.println("Contracted Value: " + contractedValue);
+                System.out.println("Actual Value: " + actualValue);
+                System.out.println("Description: " + description);
+            }
+        }catch (Exception ex) {
+            System.exit(0);
+        } finally {
+            SqlRunner.closeConnection();
+        }
+
+    }
+
+    public static void deleteAll() {
+        String sql = "DELETE FROM contracts;";
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
+    public void delete() {
+        String sql = String.format("DELETE FROM contracts WHERE id = %d;", this.id);
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
+    public void update() {
+        String sql = String.format("UPDATE contracts SET title = '%s', manager = '%s', supplier_id = %d, status = '%s', category = '%s', strategicImportanceRating = %d, startDate = '%s', endDate = '%s', contractedValue = '%s', actualValue = '%s', description = '%s' WHERE id = %d;", this.title, this.manager, this.supplier_id, this.status, this.category, this.strategicImportanceRating, this.startDate, this.endDate, this.contractedValue, this.actualValue, this.description);
+        SqlRunner.executeUpdate(sql);
+        SqlRunner.closeConnection();
+    }
+
+
 
 }
