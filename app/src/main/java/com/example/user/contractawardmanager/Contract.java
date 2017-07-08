@@ -134,7 +134,7 @@ public class Contract {
     // CRUD begins
 
     public void save() {
-        String sql = String.format("INSERT INTO albums (title, manager, supplier_id, status, category, strategicImportanceRating, startDate, endDate, contractedValue, actualValue, description) " +
+        String sql = String.format("INSERT INTO contracts (title, manager, supplier_id, status, category, strategicImportanceRating, startDate, endDate, contractedValue, actualValue, description) " +
                 "VALUES ('%s', '%s', %d, '%s', '%s', %d, '%s', '%s', %d, %d, '%s')", this.title, this.manager, this.supplier_id, this.status, this.category, this.strategicImportanceRating, this.startDate, this.endDate, this.contractedValue, this.actualValue, this.description);
         this.id = SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
