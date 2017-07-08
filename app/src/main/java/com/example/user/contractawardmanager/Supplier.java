@@ -98,7 +98,7 @@ public class Supplier {
 
     public void save() {
         String sql = String.format("INSERT INTO suppliers (name, registration, financialScore, valueScore, deliveryScore, exclude, insurance, courtJudgement) " +
-                "VALUES ('%s', %d, %d, %d, %d, %d, %d, %d)", this.name, this.registration, this.financialScore, this.valueScore, this.deliveryScore, this.exclude, this.insurance, this.courtJudgement);
+                "VALUES ('%s', '%s', %d, %d, %d, %d, %d, %d)", this.name, this.registration, this.financialScore, this.valueScore, this.deliveryScore, this.exclude, this.insurance, this.courtJudgement);
         this.id = SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
     }
@@ -110,7 +110,7 @@ public class Supplier {
         try {
             while (rs.next()) {
                 String name = rs.getString("name");
-                int registration = rs.getInt("registration");
+                String registration = rs.getString("registration");
                 int financialScore = rs.getInt("financialScore");
                 int valueScore = rs.getInt("valueScore");
                 int deliveryScore = rs.getInt("deliveryScore");
@@ -137,19 +137,19 @@ public class Supplier {
     }
 
     public static void deleteAll() {
-        String sql = "DELETE FROM contracts;";
+        String sql = "DELETE FROM suppliers;";
         SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
     }
 
     public void delete() {
-        String sql = String.format("DELETE FROM contracts WHERE id = %d;", this.id);
+        String sql = String.format("DELETE FROM suppliers WHERE id = %d;", this.id);
         SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
     }
 
     public void update() {
-        String sql = String.format("UPDATE contracts SET title = '%s', manager = '%s', supplier_id = %d, status = '%s', category = '%s', strategicImportanceRating = %d, startDate = '%s', endDate = '%s', contractedValue = '%s', actualValue = '%s', description = '%s' WHERE id = %d;", this.title, this.manager, this.supplier_id, this.status, this.category, this.strategicImportanceRating, this.startDate, this.endDate, this.contractedValue, this.actualValue, this.description);
+        String sql = String.format("UPDATE suppliers SET name = '%s', registration = '%s', financialScore = %d, valueScore = %d, deliveryScore = %d, exclude = %d, insurance = %d, courtJudgement = %d WHERE id = %d;", this.name, this.registration, this.financialScore, this.valueScore, this.deliveryScore, this.exclude, this.insurance, this.courtJudgement);
         SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
     }
