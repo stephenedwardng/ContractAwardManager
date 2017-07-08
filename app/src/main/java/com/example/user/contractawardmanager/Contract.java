@@ -39,6 +39,18 @@ public class Contract {
         this.description = description;
     }
 
+    public Contract(String title, String manager, int supplier_id, int strategicImportanceRating, String startDate, String endDate, int contractedValue, int actualValue, String description) {
+        this.title = title;
+        this.manager = manager;
+        this.supplier_id = supplier_id;
+        this.strategicImportanceRating = strategicImportanceRating;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.contractedValue = contractedValue;
+        this.actualValue = actualValue;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -195,6 +207,51 @@ public class Contract {
         String sql = String.format("UPDATE contracts SET title = '%s', manager = '%s', supplier_id = %d, status = '%s', category = '%s', strategicImportanceRating = %d, startDate = '%s', endDate = '%s', contractedValue = '%s', actualValue = '%s', description = '%s' WHERE id = %d;", this.title, this.manager, this.supplier_id, this.status, this.category, this.strategicImportanceRating, this.startDate, this.endDate, this.contractedValue, this.actualValue, this.description);
         SqlRunner.executeUpdate(sql);
         SqlRunner.closeConnection();
+    }
+
+    public static Contract findContract(int contract_id) {
+        Contract contract = null;
+        String sql = String.format("SELECT * FROM contracts WHERE id = %d;", contract_id);
+        ResultSet rs = SqlRunner.executeQuery(sql);
+
+        try {
+            while (rs.next()) {
+                String title = rs.getString("title");
+                String manager = rs.getString("manager");
+                int supplier_id = rs.getInt("supplier_id");
+                String status = rs.getString("status");
+                String category = rs.getString("category");
+                int strategicImportanceRating = rs.getInt("strategicImportanceRating");
+                String startDate = rs.getString("startDate");
+                String endDate = rs.getString("endDate");
+                int contractedValue = rs.getInt("contractedValue");
+                int actualValue = rs.getInt("actualValue");
+                String description = rs.getString("description");
+
+
+                contract = new Contract(title, manager, supplier_id, strategicImportanceRating, startDate, endDate, contractedValue, actualValue, description);
+//                System.out.println("Title: " + title);
+//                System.out.println("Manager: " + manager);
+//                System.out.println("Supplier ID: " + supplier_id);
+//                System.out.println("Status: " + status);
+//                System.out.println("Category: " + category);
+//                System.out.println("Strategic Importance Rating: " + strategicImportanceRating);
+//                System.out.println("Start Date: " + startDate);
+//                System.out.println("End Date: " + endDate);
+//                System.out.println("Contracted Value: " + contractedValue);
+//                System.out.println("Actual Value: " + actualValue);
+//                System.out.println("Description: " + description);
+            }
+        }catch (Exception ex) {
+            System.exit(0);
+        } finally {
+            SqlRunner.closeConnection();
+        }
+        return contract;
+    }
+
+    public String prettyContract(Contract contract) {
+        return String.format("'%s', '%s', %d, %d, '%s', '%s', %d, %d, '%s'", contract.title, contract.manager, contract.supplier_id, contract.strategicImportanceRating, contract.startDate, contract.endDate, contract.contractedValue, contract.actualValue, contract.description);
     }
 
 }

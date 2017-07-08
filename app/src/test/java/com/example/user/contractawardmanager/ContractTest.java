@@ -16,26 +16,35 @@ public class ContractTest {
 
     Contract contract;
 
-    @Before
-    public void setup() {
-
-        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
-
-    }
-
+//    @Before
+//    public void setup() {
+//
+//        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+//
+//    }
+//
     @Test
     public void canGetTitle() {
+        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
         assertEquals("200 MacBook Pros", contract.getTitle());
     }
 
     @Test
     public void canGetStatus() {
+        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
         assertEquals(Status.LIVE, contract.getStatus());
     }
 
     @Test
     public void canGetStrategicImportanceRating() {
+        contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
         assertEquals(3, contract.getStrategicImportanceRating());
+    }
+
+    @Test
+    public void canFindContract() {
+        contract = Contract.findContract(4);
+        assertEquals("'200 MacBook Pros', 'Edward Ng', 1, 3, '2017-07-07', '2018-07-07', 40000, 45000, 'Procurement of new laptops for new location in Aberdeen'", contract.prettyContract(contract));
     }
 
 }
