@@ -4,13 +4,10 @@ import behaviours.Cat;
 import behaviours.Performance;
 import behaviours.Status;
 import java.sql.ResultSet;
-
 import db.SqlRunner;
-
 import static behaviours.Performance.AMBER;
 import static behaviours.Performance.GREEN;
 import static behaviours.Performance.RED;
-
 
 /**
  * Created by user on 07/07/2017.

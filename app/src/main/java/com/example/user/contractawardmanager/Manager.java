@@ -9,14 +9,14 @@ import static behaviours.Status.PIPELINE;
 
 public class Manager {
 
-    Supplier supplier;
+    Screenable supplier;
     Contract contract;
 
-    public Manager(Supplier supplier) {
+    public Manager(Screenable supplier) {
         this.supplier = supplier;
     }
 
-    public Manager(Supplier supplier, Contract contract) {
+    public Manager(Screenable supplier, Contract contract) {
         this.supplier = supplier;
         this.contract = contract;
     }
