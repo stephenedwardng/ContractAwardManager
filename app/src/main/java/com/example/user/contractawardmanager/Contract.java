@@ -4,7 +4,6 @@ import behaviours.Cat;
 import behaviours.Performance;
 import behaviours.Status;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import db.SqlRunner;
 
