@@ -1,5 +1,8 @@
 package com.example.user.contractawardmanager;
 
+import static behaviours.Status.EXPIRED;
+import static behaviours.Status.PIPELINE;
+
 /**
  * Created by user on 09/07/2017.
  */
@@ -7,9 +10,21 @@ package com.example.user.contractawardmanager;
 public class Manager {
 
     Supplier supplier;
+    Contract contract;
+    Manager manager;
 
     public Manager(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+//    public Manager(Supplier supplier, Manager manager) {
+//        this.supplier = supplier;
+//        this.manager = manager;
+//    }
+
+    public Manager(Supplier supplier, Contract contract) {
+        this.supplier = supplier;
+        this.contract = contract;
     }
 
     public boolean checkExcluded() {
@@ -32,6 +47,12 @@ public class Manager {
 
     public boolean screenForEligibility() {
         if (checkExcluded() == false && checkInsurance() == true && checkCourtJudgement() == false) {
+            return true;
+        } else return false;
+    }
+
+    public boolean checkStatusOpenToSuppliers() {
+        if (contract.getStatus() == PIPELINE || contract.getStatus() == EXPIRED) {
             return true;
         } else return false;
     }
