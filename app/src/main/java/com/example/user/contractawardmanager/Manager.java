@@ -11,16 +11,10 @@ public class Manager {
 
     Supplier supplier;
     Contract contract;
-    Manager manager;
 
     public Manager(Supplier supplier) {
         this.supplier = supplier;
     }
-
-//    public Manager(Supplier supplier, Manager manager) {
-//        this.supplier = supplier;
-//        this.manager = manager;
-//    }
 
     public Manager(Supplier supplier, Contract contract) {
         this.supplier = supplier;

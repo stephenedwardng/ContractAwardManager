@@ -3,6 +3,8 @@ package com.example.user.contractawardmanager;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLException;
+
 import behaviours.Cat;
 import behaviours.Status;
 
@@ -52,6 +54,16 @@ public class ContractTest {
     public void checkValuePerformance() {
         contract = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
         assertEquals(RED, contract.valuePerformance());
+    }
+
+    @Test
+    public void canCountLiveContracts() throws SQLException {
+        Contract.deleteAll();
+        Contract contract1 = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        contract1.save();
+        Contract contract2 = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        contract2.save();
+        assertEquals(2, Contract.countLiveContracts());
     }
 
 }

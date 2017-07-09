@@ -4,6 +4,8 @@ import behaviours.Cat;
 import behaviours.Performance;
 import behaviours.Status;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import db.SqlRunner;
 
 import static behaviours.Performance.AMBER;
@@ -159,9 +161,7 @@ public class Contract {
             return RED;
         }
         else return null;
-
     }
-
 
     // CRUD begins
 
@@ -190,7 +190,6 @@ public class Contract {
                 int actualValue = rs.getInt("actualValue");
                 String description = rs.getString("description");
 
-
                 System.out.println("Title: " + title);
                 System.out.println("Manager: " + manager);
                 System.out.println("Supplier ID: " + supplier_id);
@@ -208,7 +207,6 @@ public class Contract {
         } finally {
             SqlRunner.closeConnection();
         }
-
     }
 
     public static void deleteAll() {
@@ -248,19 +246,7 @@ public class Contract {
                 int actualValue = rs.getInt("actualValue");
                 String description = rs.getString("description");
 
-
                 contract = new Contract(title, manager, supplier_id, strategicImportanceRating, startDate, endDate, contractedValue, actualValue, description);
-//                System.out.println("Title: " + title);
-//                System.out.println("Manager: " + manager);
-//                System.out.println("Supplier ID: " + supplier_id);
-//                System.out.println("Status: " + status);
-//                System.out.println("Category: " + category);
-//                System.out.println("Strategic Importance Rating: " + strategicImportanceRating);
-//                System.out.println("Start Date: " + startDate);
-//                System.out.println("End Date: " + endDate);
-//                System.out.println("Contracted Value: " + contractedValue);
-//                System.out.println("Actual Value: " + actualValue);
-//                System.out.println("Description: " + description);
             }
         }catch (Exception ex) {
             System.exit(0);
@@ -272,6 +258,23 @@ public class Contract {
 
     public String prettyContract(Contract contract) {
         return String.format("'%s', '%s', %d, %d, '%s', '%s', %d, %d, '%s'", contract.title, contract.manager, contract.supplier_id, contract.strategicImportanceRating, contract.startDate, contract.endDate, contract.contractedValue, contract.actualValue, contract.description);
+    }
+
+    public static int countLiveContracts() throws SQLException {
+        int count = 0;
+        String sql = "SELECT * FROM contracts WHERE status = 'LIVE';";
+        ResultSet rs = SqlRunner.executeQuery(sql);
+
+        try {
+            while (rs.next()) {
+                count++;
+            }
+        }catch (Exception ex) {
+            System.exit(0);
+        } finally {
+            SqlRunner.closeConnection();
+        }
+        return count;
     }
 
 }
