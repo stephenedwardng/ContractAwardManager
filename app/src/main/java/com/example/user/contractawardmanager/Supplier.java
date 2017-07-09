@@ -77,7 +77,7 @@ public class Supplier {
         this.exclude = exclude;
     }
 
-    public int isInsurance() {
+    public int hasInsurance() {
         return insurance;
     }
 
@@ -85,7 +85,7 @@ public class Supplier {
         this.insurance = insurance;
     }
 
-    public int isCourtJudgement() {
+    public int hasCourtJudgement() {
         return courtJudgement;
     }
 
