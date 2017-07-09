@@ -260,9 +260,9 @@ public class Contract {
         return String.format("'%s', '%s', %d, %d, '%s', '%s', %d, %d, '%s'", contract.title, contract.manager, contract.supplier_id, contract.strategicImportanceRating, contract.startDate, contract.endDate, contract.contractedValue, contract.actualValue, contract.description);
     }
 
-    public static int countLiveContracts() throws SQLException {
+    public static int countContractsByStatus(Status status) {
         int count = 0;
-        String sql = "SELECT * FROM contracts WHERE status = 'LIVE';";
+        String sql = String.format("SELECT * FROM contracts WHERE status = '%s';", status);
         ResultSet rs = SqlRunner.executeQuery(sql);
 
         try {
