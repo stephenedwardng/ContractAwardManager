@@ -6,11 +6,9 @@ import db.SqlRunner;
  * Created by user on 08/07/2017.
  */
 
-public class Supplier implements Screenable {
+public class Supplier extends Company implements Screenable {
 
     private int id;
-    private String name;
-    private String registration;
     private int financialScore;
     private int valueScore;
     private int deliveryScore;
@@ -19,30 +17,13 @@ public class Supplier implements Screenable {
     private int courtJudgement;
 
     public Supplier(String name, String registration, int financialScore, int valueScore, int deliveryScore, int exclude, int insurance, int courtJudgement) {
-        this.name = name;
-        this.registration = registration;
+        super(name, registration);
         this.financialScore = financialScore;
         this.valueScore = valueScore;
         this.deliveryScore = deliveryScore;
         this.exclude = exclude;
         this.insurance = insurance;
         this.courtJudgement = courtJudgement;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(String registration) {
-        this.registration = registration;
     }
 
     public int getFinancialScore() {
