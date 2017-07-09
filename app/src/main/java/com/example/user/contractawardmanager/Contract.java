@@ -162,9 +162,6 @@ public class Contract {
 
     }
 
-//    public int daysToExpiry() {
-////        return endDate - startDate
-//    }
 
     // CRUD begins
 
