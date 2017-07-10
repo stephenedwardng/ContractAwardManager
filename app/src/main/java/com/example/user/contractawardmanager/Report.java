@@ -11,11 +11,16 @@ import db.SqlRunner;
 
 public class Report {
 
+    Buyer buyer;
 
-    public Report() {
+    public Report(Buyer buyer) {
+
+        this.buyer = buyer;
+
     }
 
     public int totalActualSpend() {
+
         int total = 0;
         String sql = "SELECT SUM(actualValue) FROM contracts;";
         ResultSet rs = SqlRunner.executeQuery(sql);
@@ -30,4 +35,11 @@ public class Report {
         return total;
 
     }
+
+    public int percentageBudgetSpent() {
+        double fractionSpent = (double)totalActualSpend() / (double)buyer.getBudget();
+        return (int) Math.rint(fractionSpent * 100);
+    }
+
+
 }

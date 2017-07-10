@@ -9,9 +9,9 @@ import java.util.Date;
 public class Buyer extends Company {
 
     private int budget;
-    private Date financialYearEnd;
+    private String financialYearEnd;
 
-    public Buyer(String name, String registration, int budget, Date financialYearEnd) {
+    public Buyer(String name, String registration, int budget, String financialYearEnd) {
         super(name, registration);
         this.budget = budget;
         this.financialYearEnd = financialYearEnd;
@@ -21,7 +21,7 @@ public class Buyer extends Company {
         return budget;
     }
 
-    public Date getFinancialYearEnd() {
+    public String getFinancialYearEnd() {
         return financialYearEnd;
     }
 }

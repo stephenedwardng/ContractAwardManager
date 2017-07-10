@@ -21,7 +21,8 @@ public class ReportTest {
     @Before
     public void before() {
 
-        report = new Report();
+        buyer = new Buyer("CodeClan", "SC009857568", 250000, "2018-04-05");
+        report = new Report(buyer);
 
         Contract.deleteAll();
         Contract contract1 = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 1, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
@@ -40,6 +41,11 @@ public class ReportTest {
     @Test
     public void checkTotalActualSpend() {
         assertEquals(164500, report.totalActualSpend());
+    }
+
+    @Test
+    public void checkPercentageBudgetSpent() {
+        assertEquals(66, report.percentageBudgetSpent());
     }
 
 }
