@@ -41,5 +41,4 @@ public class Report {
         return (int) Math.rint(fractionSpent * 100);
     }
 
-
 }
