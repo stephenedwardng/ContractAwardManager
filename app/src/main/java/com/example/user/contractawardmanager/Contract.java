@@ -13,7 +13,7 @@ import static behaviours.Performance.RED;
  * Created by user on 07/07/2017.
  */
 
-public class Contract {
+public class Contract implements Reportable {
 
     private int id;
     private String title;
