@@ -8,6 +8,7 @@ import android.widget.TextView;
 public class DashboardActivity extends AppCompatActivity {
 
     ProgressBar currentSpendBar;
+    TextView currentSpend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +21,8 @@ public class DashboardActivity extends AppCompatActivity {
         int spent = report.percentageBudgetSpent();
         currentSpendBar = (ProgressBar) findViewById(R.id.currentSpendBar);
         currentSpendBar.setProgress(spent);
+
+        currentSpend = (TextView) findViewById(R.id.currentSpend);
+        currentSpend.setText("£20000 spent of £250000 budget");
     }
 }
