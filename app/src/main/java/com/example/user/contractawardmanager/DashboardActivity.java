@@ -14,7 +14,11 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        AndroidBuyer buyer = new AndroidBuyer("CodeClan", "SC009857568", 250000, "2018-04-05");
+        Report report = new Report(buyer);
+
+        int spent = report.percentageBudgetSpent();
         currentSpendBar = (ProgressBar) findViewById(R.id.currentSpendBar);
-        currentSpendBar.setProgress(75);
+        currentSpendBar.setProgress(spent);
     }
 }

@@ -40,7 +40,7 @@ public class ReportTest {
 
     @Test
     public void checkTotalActualSpend() {
-        assertEquals(164500, report.totalActualSpend());
+        assertEquals(164500, buyer.totalActualSpend());
     }
 
     @Test

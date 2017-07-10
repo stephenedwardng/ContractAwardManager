@@ -19,25 +19,9 @@ public class Report {
 
     }
 
-    public int totalActualSpend() {
-
-        int total = 0;
-        String sql = "SELECT SUM(actualValue) FROM contracts;";
-        ResultSet rs = SqlRunner.executeQuery(sql);
-        try {
-            while(rs.next()) {
-                total += rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        SqlRunner.closeConnection();
-        return total;
-
-    }
 
     public int percentageBudgetSpent() {
-        double fractionSpent = (double)totalActualSpend() / (double)buyer.getBudget();
+        double fractionSpent = (double)buyer.totalActualSpend() / (double)buyer.getBudget();
         return (int) Math.rint(fractionSpent * 100);
     }
 
