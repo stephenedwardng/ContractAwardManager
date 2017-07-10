@@ -9,8 +9,5 @@ public interface Screenable {
     int isExclude();
     int hasInsurance();
     int hasCourtJudgement();
-    int getFinancialScore();
-    int getValueScore();
-    int getDeliveryScore();
 
 }

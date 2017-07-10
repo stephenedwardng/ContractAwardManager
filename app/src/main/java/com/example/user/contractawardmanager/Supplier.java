@@ -6,7 +6,7 @@ import db.SqlRunner;
  * Created by user on 08/07/2017.
  */
 
-public class Supplier extends Company implements Screenable {
+public class Supplier extends Company implements Screenable, Scorable {
 
     private int id;
     private int financialScore;

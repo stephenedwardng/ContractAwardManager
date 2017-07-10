@@ -187,7 +187,7 @@ public class Contract {
                 String description = rs.getString("description");
 
                 System.out.println("Title: " + title);
-                System.out.println("Manager: " + manager);
+                System.out.println("Screener: " + manager);
                 System.out.println("Supplier ID: " + supplier_id);
                 System.out.println("Status: " + status);
                 System.out.println("Category: " + category);

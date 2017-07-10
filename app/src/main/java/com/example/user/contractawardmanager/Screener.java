@@ -7,16 +7,16 @@ import static behaviours.Status.PIPELINE;
  * Created by user on 09/07/2017.
  */
 
-public class Manager {
+public class Screener {
 
     Screenable supplier;
     Contract contract;
 
-    public Manager(Screenable supplier) {
+    public Screener(Screenable supplier) {
         this.supplier = supplier;
     }
 
-    public Manager(Screenable supplier, Contract contract) {
+    public Screener(Screenable supplier, Contract contract) {
         this.supplier = supplier;
         this.contract = contract;
     }
