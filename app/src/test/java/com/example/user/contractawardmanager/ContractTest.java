@@ -90,4 +90,16 @@ public class ContractTest {
         assertEquals(1, Contract.countContractsByStatus(Status.EXPIRED));
     }
 
+    @Test
+    public void canCountContractsByCategory_IT() {
+        Contract.deleteAll();
+        Contract contract1 = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.EXPIRED, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        contract1.save();
+        Contract contract2 = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.PIPELINE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        contract2.save();
+        Contract contract3 = new Contract("200 MacBook Pros", "Edward Ng", 1, Status.LIVE, Cat.IT, 3, "2017-07-07", "2018-07-07", 40000, 45000, "Procurement of new laptops for new location in Aberdeen");
+        contract3.save();
+        assertEquals(3, Contract.countContractsByCategory(Cat.IT));
+    }
+
 }
