@@ -2,7 +2,6 @@ package com.example.user.contractawardmanager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 import db.SqlRunner;
 

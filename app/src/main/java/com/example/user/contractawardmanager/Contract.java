@@ -58,88 +58,44 @@ public class Contract implements Reportable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getManager() {
         return manager;
-    }
-
-    public void setManager(String manager) {
-        this.manager = manager;
     }
 
     public int getSupplier_id() {
         return supplier_id;
     }
 
-    public void setSupplier_id(int supplier_id) {
-        this.supplier_id = supplier_id;
-    }
-
     public Status getStatus() {
         return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public Cat getCategory() {
         return category;
     }
 
-    public void setCategory(Cat category) {
-        this.category = category;
-    }
-
     public int getStrategicImportanceRating() {
         return strategicImportanceRating;
-    }
-
-    public void setStrategicImportanceRating(int strategicImportanceRating) {
-        this.strategicImportanceRating = strategicImportanceRating;
     }
 
     public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
     public String getEndDate() {
         return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public int getContractedValue() {
         return contractedValue;
     }
 
-    public void setContractedValue(int contractedValue) {
-        this.contractedValue = contractedValue;
-    }
-
     public int getActualValue() {
         return actualValue;
     }
 
-    public void setActualValue(int actualValue) {
-        this.actualValue = actualValue;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int calcChangeValue() {

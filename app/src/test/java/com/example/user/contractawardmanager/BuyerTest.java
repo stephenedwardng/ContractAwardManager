@@ -9,14 +9,13 @@ import behaviours.Status;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by user on 10/07/2017.
+ * Created by user on 12/07/2017.
  */
 
-public class ReportTest {
+public class BuyerTest {
 
     Report report;
     Buyer buyer;
-    Contract contract;
 
     @Before
     public void before() {
@@ -39,8 +38,8 @@ public class ReportTest {
     }
 
     @Test
-    public void checkPercentageBudgetSpent() {
-        assertEquals(66, report.percentageBudgetSpent());
+    public void checkTotalActualSpend() {
+        assertEquals(164500, buyer.totalActualSpend());
     }
 
 }

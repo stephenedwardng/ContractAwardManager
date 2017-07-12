@@ -30,50 +30,25 @@ public class Supplier extends Company implements Screenable, Scorable {
         return financialScore;
     }
 
-    public void setFinancialScore(int financialScore) {
-        this.financialScore = financialScore;
-    }
-
     public int getValueScore() {
         return valueScore;
-    }
-
-    public void setValueScore(int valueScore) {
-        this.valueScore = valueScore;
     }
 
     public int getDeliveryScore() {
         return deliveryScore;
     }
 
-    public void setDeliveryScore(int deliveryScore) {
-        this.deliveryScore = deliveryScore;
-    }
-
     public int isExclude() {
         return exclude;
-    }
-
-    public void setExclude(int exclude) {
-        this.exclude = exclude;
     }
 
     public int hasInsurance() {
         return insurance;
     }
 
-    public void setInsurance(int insurance) {
-        this.insurance = insurance;
-    }
-
     public int hasCourtJudgement() {
         return courtJudgement;
     }
-
-    public void setCourtJudgement(int courtJudgement) {
-        this.courtJudgement = courtJudgement;
-    }
-
 
     // CRUD begins
 
@@ -114,7 +89,6 @@ public class Supplier extends Company implements Screenable, Scorable {
         } finally {
             SqlRunner.closeConnection();
         }
-
     }
 
     public static void deleteAll() {
@@ -150,7 +124,6 @@ public class Supplier extends Company implements Screenable, Scorable {
                 int exclude = rs.getInt("exclude");
                 int insurance = rs.getInt("insurance");
                 int courtJudgement = rs.getInt("courtJudgement");
-
 
                 supplier = new Supplier(name, registration, financialScore, valueScore, deliveryScore, exclude, insurance, courtJudgement);
             }
